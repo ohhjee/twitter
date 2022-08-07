@@ -2,7 +2,7 @@
   <div class="grid grid-cols-5 place-items-center">
     <router-link
       v-for="route in routes"
-      :key="route"
+      :key="route "
       :to="route.path"
       :class="`p-4 ${
         route.name === $route.name ? 'text-blue-700' : 'text-gray-400'
@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onBeforeMount } from "vue";
+import { defineComponent, ref, onBeforeMount} from "vue";
 import { useRouter } from "vue-router";
 import {
   HomeIcon,
@@ -35,7 +35,7 @@ export default defineComponent({
       router.value = routers.options.routes.filter((r) => r.content);
     });
 
-    return { routes, router };
+    return { routes, router  };
   },
 });
 </script>

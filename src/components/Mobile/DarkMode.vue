@@ -58,26 +58,27 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, watch } from "vue";
 
 export default defineComponent({
   setup() {
     const verify = ref<null>(null);
-    const isDark = ref<boolean>(false);
+    const isDark = ref<any>();
 
+    watch(isDark, (newval) => {
+      localStorage.setItem("isDark", newval);
+    });
     return { verify, isDark };
   },
   methods: {
     Dark() {
       this.isDark = true;
-    //   console.log("ON");
-        console.log(this.isDark);
-      
+      //   console.log("ON");
+      console.log(this.isDark);
     },
     white() {
       this.isDark = false;
       console.log(this.isDark);
-
     },
   },
 });

@@ -44,7 +44,6 @@ const routes: Array<RouteRecordRaw> = [
     component: NotificationView,
     content: "BellIcon",
     decks: true,
-
     mainMenu: true,
   },
   {
