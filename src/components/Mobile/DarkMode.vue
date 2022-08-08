@@ -1,5 +1,9 @@
 <template>
-  <div id="idk" class="space-y-4 m-3">
+  <div
+    id="idk"
+    class="space-y-4 m-3"
+   :class="[!lightMode ? 'bg-black text-white' : '']"
+  >
     <div class="flex justify-between items-center" @click="white">
       <label for="off">Off</label>
       <input
@@ -15,7 +19,6 @@
     <div
       class="flex justify-between items-center"
       @click="Dark"
-      :isDark="isDark"
     >
       <label for="on">On</label>
       <input
@@ -58,27 +61,31 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from "vue";
+import { defineComponent, onMounted, ref, watch } from "vue";
 
 export default defineComponent({
   setup() {
     const verify = ref<null>(null);
-    const isDark = ref<any>();
+    const lightMode = ref<any>();
 
-    watch(isDark, (newval) => {
-      localStorage.setItem("isDark", newval);
+    watch(lightMode, (newval) => {
+      localStorage.setItem("lightMode", newval);
     });
-    return { verify, isDark };
+
+    onMounted(() => {
+      lightMode.value = localStorage.getItem("lightMode") || "";
+    });
+
+    
+
+    return { verify, lightMode };
   },
   methods: {
-    Dark() {
-      this.isDark = true;
-      //   console.log("ON");
-      console.log(this.isDark);
-    },
     white() {
-      this.isDark = false;
-      console.log(this.isDark);
+      this.lightMode = true;
+    },
+    Dark() {
+      this.lightMode = false;
     },
   },
 });
