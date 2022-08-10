@@ -79,7 +79,7 @@ import {
 import FontIcons from "./fontIcons.vue";
 
 export default defineComponent({
-  props: ["showModel", "isDark"],
+  props: ["showModel"],
   components: {
     ChevronDownIcon,
     FontIcons,

@@ -10,7 +10,7 @@
     >
       <component :is="route.content" class="w-6 h-6 text-black font-bold" />
     </router-link>
-  </div>
+  </div> 
 </template>
 
 <script lang="ts">

@@ -1,5 +1,5 @@
 <template>
-  <div class="lg:container">
+  <div class="lg:container" :class="[lightMode ? 'bg-black text-white' : '']">
     <div id="media">
       <div class="m-3">
         <div class="text-[1.2rem] font-bold mb-4">Media</div>
@@ -77,12 +77,27 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  setup() {
-    return {};
-  },
+  props: ["lightMode"],
+  emits:["light", "black"],
+
+  // setup() {
+  //   const lightMode = ref<any>(localStorage.getItem("lightMode") == "true");
+  //   return { lightMode };
+  // },
+  // methods: {
+  //   light() {
+  //     this.lightMode = false;
+  //     localStorage.setItem("lightMode", this.lightMode);
+  //     if (this.lightMode.checked) this.lightMode.checked;
+  //   },
+  //   black() {
+  //     this.lightMode = true;
+  //     localStorage.setItem("lightMode", this.lightMode);
+  //   },
+  // },
 });
 </script>
 

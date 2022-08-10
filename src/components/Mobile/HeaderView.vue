@@ -9,12 +9,17 @@
       <fonts :icon="['fab', 'twitter']" class="w-6 h-6 text-blue-500"/>
       <SparklesIcon class="w-6 h-6 text-black" />
     </div>
-    <SidebarView class="p-0" :showModal="showModal" v-show="showModal" @closeNav="sidebar"/>
+    <!-- <SidebarView  /> -->
+     <SidebarView  class="p-0"
+      :showModal="showModal"
+      v-show="showModal"
+      @closeNav="sidebar"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent,ref } from "vue";
 import { SparklesIcon } from "@heroicons/vue/outline";
 import SidebarView from "./SidebarView.vue";
 
@@ -22,6 +27,7 @@ export default defineComponent({
   components: { SparklesIcon, SidebarView },
   setup() {
     const showModal = ref<boolean>(false);
+    
     return { showModal };
   },
   methods: {
@@ -29,6 +35,7 @@ export default defineComponent({
       this.showModal = !this.showModal;
     },
   },
+
 });
 </script>
 

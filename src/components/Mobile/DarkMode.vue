@@ -1,9 +1,5 @@
 <template>
-  <div
-    id="idk"
-    class="space-y-4 m-3"
-   :class="[!lightMode ? 'bg-black text-white' : '']"
-  >
+  <div id="idk" class="space-y-4 m-3">
     <div class="flex justify-between items-center" @click="white">
       <label for="off">Off</label>
       <input
@@ -16,10 +12,7 @@
         id="off"
       />
     </div>
-    <div
-      class="flex justify-between items-center"
-      @click="Dark"
-    >
+    <div class="flex justify-between items-center" @click="Dark">
       <label for="on">On</label>
       <input
         type="radio"
@@ -44,7 +37,11 @@
       />
     </div>
   </div>
-  <div class="border-t-2 border-black"></div>
+  <div
+    :class="[
+      lightMode ? 'border-t-[1px] border-white' : 'border-t-[1px] border-black',
+    ]"
+  ></div>
   <div id="idk" class="space-y-4 m-3">
     <div class="flex justify-between items-center">
       <div class="text-[1rem] font-bold">Dark theme</div>
@@ -64,28 +61,20 @@
 import { defineComponent, onMounted, ref, watch } from "vue";
 
 export default defineComponent({
-  setup() {
-    const verify = ref<null>(null);
-    const lightMode = ref<any>();
+  props: ["lightMode"],
+  emits: ["white", "dark"],
 
-    watch(lightMode, (newval) => {
-      localStorage.setItem("lightMode", newval);
-    });
-
-    onMounted(() => {
-      lightMode.value = localStorage.getItem("lightMode") || "";
-    });
-
-    
-
-    return { verify, lightMode };
+  setup(_, { emit }) {
+    const verify = ref<any>();
+    // const lightMode = ref<any>(localStorage.getItem("lightMode") == "true");
+    return { verify };
   },
   methods: {
     white() {
-      this.lightMode = true;
+      this.$emit("white");
     },
     Dark() {
-      this.lightMode = false;
+      this.$emit("dark");
     },
   },
 });

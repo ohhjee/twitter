@@ -77,7 +77,7 @@
       </router-link>
     </div>
     <div class="account mx-[2px] ">
-      <router-link to="/Display" where_to_chanage_color class="space-x-3 flex items-center">
+      <router-link :to="{name: 'DisplayLan'}" where_to_chanage_color class="space-x-3 flex items-center">
         <div class="icon">
           <UserCircleIcon class="w-8 h-8 text-gray-600" />
         </div>

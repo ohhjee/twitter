@@ -5,9 +5,9 @@ import ExploreView from "@/views/ExploreView.vue";
 import NotificationView from "@/views/NotificationView.vue";
 import MessageView from "@/views/MessageView.vue";
 import SettingView from "@/views/SettingsView.vue";
-import DisplayLan from "@/views/DisplayLan.vue";
-import DisplaySound from "@/views/DisplayView.vue";
-import Darkmode from "@/views/DarkSettings.vue";
+import DisplayLan from "@/views/Setting/DisplayLan.vue";
+import DisplaySound from "@/views/Setting/DisplayView.vue";
+import Darkmode from "@/views/Setting/DarkSettings.vue";
 import BookMarkView from "@/views/BookMarkView.vue";
 import ProfileView from "@/views/ProfileView.vue";
 import MoreView from "@/views/MoreView.vue";
@@ -55,13 +55,13 @@ const routes: Array<RouteRecordRaw> = [
     decks: true,
   },
   {
-    path: "/Setting",
+    path: "/setting",
     name: "Setting",
     component: SettingView,
   },
   {
-    path: "/Display",
-    name: "Display",
+    path: "/display",
+    name: "DisplayLan",
     component: DisplayLan,
   },
   {
@@ -74,6 +74,7 @@ const routes: Array<RouteRecordRaw> = [
     name: "Darkmode",
     component: Darkmode,
   },
+
   {
     path: "/bookmark",
     name: "Bookmark",

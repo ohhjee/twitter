@@ -12,7 +12,10 @@
       </div>
     </div>
     <div class="border-t-[1px] border-black"></div>
-    <SettingsOptions />
+    <SettingsOptions>
+    <router-view></router-view>
+
+    </SettingsOptions>
   </div>
 </template>
 
@@ -22,6 +25,7 @@ import { ArrowLeftIcon } from "@heroicons/vue/outline";
 import SettingsOptions from "@/components/Mobile/settingsOptions.vue";
 
 export default defineComponent({
+  name:"SettingView",
   components: { ArrowLeftIcon, SettingsOptions },
   setup() {
     return {};
