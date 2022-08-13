@@ -1,5 +1,5 @@
 <template>
-  <div :class="[lightMode ? 'bg-black text-white' : '', 'min-h-screen']">
+  <div class="min-h-screen">
     <router-view />
   </div>
 </template>
@@ -19,7 +19,7 @@ export default defineComponent({
     light() {
       this.lightMode = false;
       localStorage.setItem("lightMode", this.lightMode);
-      if (this.lightMode.checked) this.lightMode.checked;
+      // if (this.lightMode.checked) this.lightMode.checked;
     },
     black() {
       this.lightMode = true;
