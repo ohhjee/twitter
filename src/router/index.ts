@@ -18,7 +18,12 @@ const routes: Array<RouteRecordRaw> = [
     path: "/",
     name: "home",
     component: HomeView,
+<<<<<<< HEAD
     // content: "HomeIcon",
+=======
+
+    // content: "HomeIcon" as const,
+>>>>>>> 01e6844e970d04a1f419b2fcf7230b16d2b84f1f
     // mainMenu: true,
     // decks: true,
   },
@@ -26,6 +31,10 @@ const routes: Array<RouteRecordRaw> = [
     path: "/search",
     name: "search",
     component: SearchView,
+<<<<<<< HEAD
+=======
+
+>>>>>>> 01e6844e970d04a1f419b2fcf7230b16d2b84f1f
     // content: "SearchIcon",
     // mainMenu: true,
     // decks: false,
@@ -34,6 +43,10 @@ const routes: Array<RouteRecordRaw> = [
     path: "/explore",
     name: "Explore",
     component: ExploreView,
+<<<<<<< HEAD
+=======
+
+>>>>>>> 01e6844e970d04a1f419b2fcf7230b16d2b84f1f
     // content: "GlobeIcon",
     // mainMenu: true,
     // decks: true,
@@ -42,6 +55,10 @@ const routes: Array<RouteRecordRaw> = [
     path: "/notification",
     name: "Notification",
     component: NotificationView,
+<<<<<<< HEAD
+=======
+
+>>>>>>> 01e6844e970d04a1f419b2fcf7230b16d2b84f1f
     // content: "BellIcon",
     // decks: true,
     // mainMenu: true,
@@ -50,6 +67,10 @@ const routes: Array<RouteRecordRaw> = [
     path: "/message",
     name: "Message",
     component: MessageView,
+<<<<<<< HEAD
+=======
+
+>>>>>>> 01e6844e970d04a1f419b2fcf7230b16d2b84f1f
     // content: "MailIcon",
     // mainMenu: true,
     // decks: true,
@@ -79,29 +100,29 @@ const routes: Array<RouteRecordRaw> = [
     path: "/bookmark",
     name: "Bookmark",
     component: BookMarkView,
-    desktop: "BookmarkIcon",
-    decks: true,
+    // desktop: "BookmarkIcon",
+    // decks: true,
   },
   {
     path: "/profile",
     name: "Profile",
     component: ProfileView,
-    desktop: "UserIcon",
-    decks: true,
+    // desktop: "UserIcon",
+    // decks: true,
   },
   {
     path: "/more",
     name: "More",
     component: MoreView,
-    desktop: "DotsCircleHorizontalIcon",
-    decks: true,
+    // desktop: "DotsCircleHorizontalIcon",
+    // decks: true,
   },
   {
     path: "/tweet",
     name: "Tweet",
     component: TweetView,
-    desktop: "DotsCircleHorizontalIcon",
-    decks: false,
+    // desktop: "DotsCircleHorizontalIcon",
+    // decks: false,
   },
 ];
 
