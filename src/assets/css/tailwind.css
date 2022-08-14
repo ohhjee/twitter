@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 main#mobile {
-    max-height: calc(100vh - 120px);
+    max-height: calc(100vh - 109.69px);
 }
 
 ::webkit-scrollbar {

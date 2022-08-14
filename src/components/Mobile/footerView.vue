@@ -1,6 +1,6 @@
 <template>
   <div class="grid grid-cols-5 place-items-center">
-    <router-link
+    <!-- <router-link
       v-for="route in routes"
       :key="route "
       :to="route.path"
@@ -9,7 +9,8 @@
       }`"
     >
       <component :is="route.content" class="w-6 h-6 text-black font-bold" />
-    </router-link>
+    </router-link> -->
+    <!-- <router-link></router-link> -->
   </div> 
 </template>
 
@@ -25,7 +26,7 @@ import {
   BookmarkIcon
 } from "@heroicons/vue/outline";
 export default defineComponent({
-  components: { HomeIcon, SearchIcon, BellIcon, GlobeIcon, MailIcon,BookmarkIcon },
+  // components: { HomeIcon, SearchIcon, BellIcon, GlobeIcon, MailIcon,BookmarkIcon },
   setup() {
     const routes = ref<any>([]);
     const router = ref<any>([]);
