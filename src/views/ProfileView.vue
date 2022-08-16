@@ -9,7 +9,9 @@
     </footer>
   </div> <div class="container mx-auto">
     <div class="hidden lg:flex">
-      <div class="w-[30%] p-4"><NavVIew /></div>
+      <div class="w-[30%] p-4">
+            <footMoblie />
+      <NavVIew /></div>
       <div class="border-r-2 border-gray-400 h-screen"></div>
       <div class="w-[55%] p-4">i am a Profile</div>
       <div class="border-r-2 border-gray-400 h-screen"></div>
@@ -23,6 +25,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import footerView from "@/components/Mobile/footerView.vue";
+import footMoblie from "@/components/Mobile/footerMobile.vue";
 import SearchView from "@/components/Mobile/SearchView.vue";
 import ExploreView from "@/components/Desktop/ExploreView.vue";
 import NavVIew from "@/components/Desktop/NavVIew.vue";
@@ -31,6 +34,7 @@ export default defineComponent({
   name: "HomeView",
   components: {
     footerView,
+        footMoblie, 
     SearchView,
     ExploreView,
     NavVIew

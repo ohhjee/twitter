@@ -1,16 +1,25 @@
 <template>
-  <div class="grid grid-row-5 place-items-center gap-y-[1.3rem]">
+  <div class="grid grid-row-5 place-items-start gap-y-[1.3rem]">
     <router-link
-      v-for="route in routes"
-      :key="route"
-      :to="route.path"
-      :class="`p-[4px_0px] flex items-center gap-x-[2rem] w-[100%] font-bold capitalize ${
-        route.name === $route.name ? 'text-blue-700' : 'text-black'
-      }`"
+      :to="{ path: '/bookmark' }"
+      class="p-[0] gap-x-[2rem] font-bold flex"
     >
-      <component :is="route.content" class="w-6 h-6 font-bold text-black" />
-      <component :is="route.desktop" class="w-6 h-6 font-bold text-black" />
-      <div class="">{{ route.name }}</div>
+      <BookmarkIcon class="w-6 h-6" id="icon" />
+      <span>Bookmark</span>
+    </router-link>
+    <router-link
+      :to="{ path: '/profile' }"
+      class="p-[0] gap-x-[2rem] font-bold flex"
+    >
+      <UserIcon class="w-6 h-6" />
+      <span>Profile</span>
+    </router-link>
+    <router-link
+      :to="{ path: '/more' }"
+      class="p-[0] gap-x-[2rem] font-bold flex"
+    >
+      <DotsCircleHorizontalIcon class="w-6 h-6" />
+      <span>More</span>
     </router-link>
 
     <router-link to="#" class="w-full text-center">
@@ -21,47 +30,78 @@
       </div>
     </router-link>
   </div>
+  <div class="dark-mode m-4">
+    <div
+      class="flex justify-between"
+      id="shows"
+      v-if="!lightMode"
+      @click="theme_light"
+    >
+      light Mode
+      <div>
+        <SunIcon class="w-6 h-6 text-yellow-400" />
+      </div>
+    </div>
+    <div id="shows" class="flex justify-between" @click="theme_dark" v-else>
+      <div>Dark Mode</div>
+      <MoonIcon class="w-6 h-6 text-white" />
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onBeforeMount } from "vue";
-import { useRouter } from "vue-router";
+import { defineComponent, ref } from "vue";
+import { getTheme, setTheme } from "@/util/themeProvider";
 import {
-  HomeIcon,
-  SearchIcon,
-  BellIcon,
-  GlobeIcon,
-  MailIcon,
   BookmarkIcon,
   UserIcon,
   DotsCircleHorizontalIcon,
 } from "@heroicons/vue/outline";
+import { SunIcon, MoonIcon } from "@heroicons/vue/solid";
+// import {} from "@/he"
 export default defineComponent({
   components: {
-    HomeIcon,
-    SearchIcon,
-    BellIcon,
-    GlobeIcon,
-    MailIcon,
+    SunIcon,
+    MoonIcon,
     BookmarkIcon,
     UserIcon,
     DotsCircleHorizontalIcon,
   },
-  setup() {
-    const routes = ref<unknown>([]);
-    const router = ref<unknown>([]);
-    const routers = useRouter();
-    onBeforeMount(() => {
-      console.log(routers);
-      // routes.value = routers.options.routes.filter((r) => r.mainMenu);
-      // routes.value = routers.options.routes.filter((r) => r.decks);
-      // router.value = routers.options.routes.filter((r) => r.content);
-      // router.value = routers.options.routes.filter((r) => r.desktop);
-    });
-
-    return { routes, router };
+  setup(_, { emit }) {
+    const lightMode = ref<boolean>(getTheme() === "light");
+    const theme_light = () => {
+      const theme = "dark";
+      if (theme) {
+        setTheme(theme);
+        lightMode.value = true;
+        document.body.setAttribute("theme", theme);
+        // document.getElementById("shadow_color").setAttribute("theme", theme);
+        // document.getElementById("input").setAttribute("theme", theme);
+        emit("theme_light");
+      }
+    };
+    const theme_dark = () => {
+      const theme = "light";
+      if (theme) {
+        setTheme(theme);
+        lightMode.value = false;
+        document.body.setAttribute("theme", theme);
+        // document.getElementById("shadow_color").setAttribute("theme", theme);
+        // document.getElementById("input").setAttribute("theme", theme);
+        emit("theme_black");
+      }
+    };
+    return { lightMode, theme_light, theme_dark };
   },
 });
 </script>
 
-<style scoped></style>
+<style>
+#input[theme="light"] {
+  box-shadow: 0px 0px 10px black !important;
+  background: #d3d3d300 !important;
+}
+#input[theme="dark"] {
+  background: #d3d3d300 !important;
+}
+</style>

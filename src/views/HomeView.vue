@@ -3,7 +3,11 @@
     <header class="border-b-2">
       <HeaderView />
     </header>
-    <main id="mobile" class="flex-1 overflow-y-scroll">
+    <main
+      id="mobile"
+      class="flex-1 overflow-y-scroll"
+      VueObserveVisibility="handleToBottom"
+    >
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, libero
       molestias iure quis corrupti eius assumenda cupiditate maiores voluptate
       quas officiis, sit dolore quisquam explicabo at. Nesciunt maxime
@@ -71,15 +75,13 @@
   </div>
   <div class="container mx-auto">
     <div class="hidden lg:flex">
-<<<<<<< HEAD
       <div class="w-[30%] p-4">
-      <footerMobile/>
-      <NavVIew /></div>
-      <div class="border-r-2 border-gray-400 h-screen"></div>
-=======
-      <div class="w-[30%] p-4"><NavVIew /></div>
+        <footerMobile />
+        <NavVIew />
+      </div>
+
       <div class="h-screen border-r-2 border-gray-400"></div>
->>>>>>> 01e6844e970d04a1f419b2fcf7230b16d2b84f1f
+
       <div class="w-[55%] p-4">
         <div class="flex items-center justify-between">
           <div class="page_name">Home</div>
@@ -143,8 +145,10 @@ import { defineComponent, ref, onMounted } from "vue";
 // import footerView from "@/components/Mobile/footerView.vue";
 import footerMobile from "@/components/Mobile/footerMobile.vue";
 import HeaderView from "../components/Mobile/HeaderView.vue";
-import NavVIew from "@/components/Desktop/NavVIew.vue"; // @ is an alias to /src
 import SearchView from "@/components/Desktop/SearchDesk.vue";
+import NavVIew from "@/components/Desktop/NavVIew.vue"; // @ is an alias to /src
+// import VueObserveVisibilityPlugin from "vue-observe-visibility";
+// import db from "@/data/db"
 import env from "@/env.js";
 import axios from "axios";
 import {
@@ -172,51 +176,81 @@ export default defineComponent({
     EmojiHappyIcon,
     CalendarIcon,
     LocationMarkerIcon,
-    FooterMobile
-},
+    FooterMobile,
+  },
   setup() {
-    const trend = ref<[]>([]);
+    const trends = ref<[]>();
+    const config = {
+      headers: {
+        "X-RapidAPI-Key": process.env.VUE_APP_API_KEY,
+        "X-RapidAPI-Host": "twitter32.p.rapidapi.com",
+      },
+    };
+    const trend = async () => {
+      try{
+      await axios(`${process.env.VUE_APP_BASE_URL}getUserMedia/?user_id=415859364`, config).then((res)=>res.data.tweets);
+      
+
+      }catch(error){
+        console.log(error.message);
+        
+      }
+};
+    const handleToBottom = () => {
+      console.log("hey");
+    };
     onMounted(() => {
-      const config = {
-        headers: {
-          "X-RapidAPI-Key": process.env.VUE_APP_API_KEY,
-          "X-RapidAPI-Host": "twitter154.p.rapidapi.com",
-        },
-      };
-      // try {
-      //   axios
-      //     .get(`${env.BASE_URL}user/tweets?username=elonmusk&?limit=40`, config)
-      //     .then((res) => res.data.tweet_id);
-      //   // .then((res) => console.log(res.data.results));
-      // } catch (error: any) {
-      //   console.log(error.response.data.message);
-      // }
+      trend();
+      console.log(process.env.VUE_APP_API_KEY);
+      console.log("abc");
     });
+    return { handleToBottom };
+
+    /*=== THIS IS NOT IN USE WILL DELETE LATER ===*/
+
+
+    // const trend = ref<[]>([]);
+    // onMounted(() => {
+    //   const config = {
+    //     headers: {
+    //       "X-RapidAPI-Key": process.env.VUE_APP_API_KEY,
+    //       "X-RapidAPI-Host": "twitter154.p.rapidapi.com",
+    //     },
+    //   };
+    // try {
+    //   axios
+    //     .get(`${env.BASE_URL}user/tweets?username=elonmusk&?limit=40`, config)
+    //     .then((res) => res.data.tweet_id);
+    //   // .then((res) => console.log(res.data.results));
+    // } catch (error: any) {
+    //   console.log(error.response.data.message);
+    // }
+    // });
     // const sidebar = ref<boolean>(false);
 
-    const getTrend = async () => {
-      const config = {
-        headers: {
-          "X-RapidAPI-Key": `${env.API_KEY}`,
-          "X-RapidAPI-Host": "twitter154.p.rapidapi.com",
-        },
-      };
-      try {
-        const res = await axios(
-          `${env.BASE_URL}user/tweets?username=omarmhaimdat&?limit=40`,
-          config
-        );
-        trend.value = res.data;
-      } catch (e) {
-        console.log(e);
-      }
-    };
+    // const getTrend = async () => {
+    //   const config = {
+    //     headers: {
+    //       "X-RapidAPI-Key": `${env.API_KEY}`,
+    //       "X-RapidAPI-Host": "twitter154.p.rapidapi.com",
+    //     },
+    //   };
+    //   try {
+    //     const res = await axios(
+    //       `${env.BASE_URL}user/tweets?username=omarmhaimdat&?limit=40`,
+    //       config
+    //     );
+    //     trend.value = res.data;
+    //   } catch (e) {
+    //     console.log(e);
+    //   }
+    // };
 
-    setInterval(() => {
-      // getTrend();
-    }, 1500);
+    // setInterval(() => {
+    //   // getTrend();
+    // }, 1500);
 
-    return { trend };
+    // return { trend };
   },
 });
 </script>

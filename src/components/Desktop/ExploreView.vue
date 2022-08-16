@@ -1,8 +1,13 @@
 <template>
-  <div class="mt-2 bg-black w-full rounded-[10px] p-3">
+  <div
+    class="mt-2 bg-black w-full rounded-[10px] p-3"
+    id="shadow_color"
+    @theme_black="bg_color"
+    @theme_light="bg_colors"
+  >
     <div class="font-[18px] font-extrabold text-white">Who to follow</div>
     <div class="my-3">
-      <router-link to="#" class="space-x-2 w-full text-white ">
+      <router-link to="#" class="space-x-2 w-full text-white">
         <div class="flex justify-between mb-7">
           <div class="flex space-x-2">
             <div
@@ -10,8 +15,8 @@
             ></div>
             <div class="text">
               <div class="text-white flex items-center justify-between">
-                <div class="user_name flex items-center ">
-                  <div class="text-[.8rem]">OKX</div> 
+                <div class="user_name flex items-center">
+                  <div class="text-[.8rem]">OKX</div>
                   <BadgeCheckIcon class="w-4 h-4 ml-1 text-white" />
                 </div>
               </div>
@@ -32,7 +37,7 @@
           </div>
         </div>
       </router-link>
-      <router-link to="#" class="space-x-2 w-full text-white ">
+      <router-link to="#" class="space-x-2 w-full text-white">
         <div class="flex justify-between mb-7">
           <div class="flex space-x-2">
             <div
@@ -40,8 +45,8 @@
             ></div>
             <div class="text">
               <div class="text-white flex items-center justify-between">
-                <div class="user_name flex items-center ">
-                  <div class="text-[.8rem]">OKX</div> 
+                <div class="user_name flex items-center">
+                  <div class="text-[.8rem]">OKX</div>
                   <BadgeCheckIcon class="w-4 h-4 ml-1 text-white" />
                 </div>
               </div>
@@ -56,13 +61,11 @@
             </div>
           </div>
           <div class="bg-white h-8 flex items-center rounded-2xl py-2 px-4">
-            <router-link to="" class="text-black font-bold"
-              >follow</router-link
-            >
+            <router-link to="" class="text-black font-bold">follow</router-link>
           </div>
         </div>
       </router-link>
-      <router-link to="#" class="space-x-2 w-full text-white ">
+      <router-link to="#" class="space-x-2 w-full text-white">
         <div class="flex justify-between mb-7">
           <div class="flex space-x-2">
             <div
@@ -70,8 +73,8 @@
             ></div>
             <div class="text">
               <div class="text-white flex items-center justify-between">
-                <div class="user_name flex items-center ">
-                  <div class="text-[.8rem]">OKX</div> 
+                <div class="user_name flex items-center">
+                  <div class="text-[.8rem]">OKX</div>
                   <BadgeCheckIcon class="w-4 h-4 ml-1 text-white" />
                 </div>
               </div>
@@ -95,22 +98,54 @@
     </div>
 
     <div class="seemore">
-    <router-link to="#" class="text-blue-700 font-semibold text-[15px]">
-    Show  more
-    </router-link>
+      <router-link to="#" class="text-blue-700 font-semibold text-[15px]">
+        Show more
+      </router-link>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import { BadgeCheckIcon, ArrowNarrowUpIcon } from "@heroicons/vue/solid";
+import { getTheme, setTheme } from "@/util/themeProvider";
 export default defineComponent({
   components: { BadgeCheckIcon, ArrowNarrowUpIcon },
   setup() {
-    return {};
+    const lightMode = ref<boolean>(getTheme() === "light");
+    const bg_colors = () => {
+      const theme = "dark";
+      if (theme) {
+        setTheme(theme);
+        lightMode.value = true;
+        // document.body.setAttribute("theme", theme);
+        document.getElementById("shadow_color").setAttribute("theme", theme);
+        // document.getElementById("input").setAttribute("theme", theme);
+        console.log("explre");
+        
+      }
+    };
+    const bg_color = () => {
+      const theme = "light";
+      if (theme) {
+        setTheme(theme);
+        lightMode.value = false;
+        // document.body.setAttribute("theme", theme);
+        document.getElementById("shadow_color").setAttribute("theme", theme);
+        // document.getElementById("input").setAttribute("theme", theme);
+      }
+    };
+    return { bg_color, bg_colors };
   },
 });
 </script>
 
-<style scoped></style>
+<style>
+#shadow_color[theme="dark"] {
+  background: #d3d3d300 !important;
+  box-shadow: 0px 0px 10px white !important;
+}
+#shadow_color[theme="light"] {
+  background: black !important;
+}
+</style>

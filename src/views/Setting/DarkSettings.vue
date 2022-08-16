@@ -1,7 +1,7 @@
 <template>
   <div
     id="dark-mode"
-    :class="[!lightMode ? 'bg-black text-white' : 'bg-white text-black']"
+   
   >
     <div class="flex items-center py-2 mx-2 space-x-3">
       <div class="back">
@@ -14,11 +14,7 @@
       </div>
     </div>
     <div
-      :class="[
-        lightMode
-          ? 'border-t-[1px] border-white'
-          : 'border-t-[1px] border-black',
-      ]"
+     
     ></div>
     <div class="m-2"></div>
     <DarkMode @white="light" @dark="black" :lightMode="lightMode" />
@@ -43,14 +39,14 @@ export default defineComponent({
       const theme = "light";
       setTheme(theme);
       lightMode.value = true;
-      // localStorage.setItem("lightMode", this.lightMode);
-      // if (this.lightMode.checked) this.lightMode.checked;
+    document.body.setAttribute("theme", theme)
     };
 
     const black = () => {
       const theme = "dark";
       setTheme(theme);
       lightMode.value = false;
+      document.body.setAttribute("theme", theme)
       // this.lightMode = true;
       // localStorage.setItem("lightMode", this.lightMode);
     };
@@ -62,9 +58,5 @@ export default defineComponent({
 </script>
 
 <style scoped>
-body[theme="light"] {
-}
 
-body[theme="dark"] {
-}
 </style>

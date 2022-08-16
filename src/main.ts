@@ -10,10 +10,12 @@ library.add(fas, fab, far);
 import router from "./router";
 import store from "./store";
 import "./assets/css/tailwind.css";
+import VueObserveVisibility from 'vue-observe-visibility'
 
 createApp(App)
 .component("fonts", FontAwesomeIcon)
 .use(Heroicons)
 .use(store)
 .use(router)
+.use(VueObserveVisibility)
 .mount("#app");

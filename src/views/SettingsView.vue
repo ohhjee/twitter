@@ -11,7 +11,7 @@
         <div class="anchor">@OLUWA__GBENGA</div>
       </div>
     </div>
-    <div class="border-t-[1px] border-black"></div>
+    <div class="border-t-[1px]"></div>
     <SettingsOptions>
     <router-view></router-view>
 

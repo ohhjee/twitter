@@ -8,16 +8,15 @@
         route.name === $route.name ? 'text-blue-700' : 'text-gray-400'
       }`"
     >
-<<<<<<< HEAD
       <component :is="route.content" class="w-6 h-6 text-black font-bold" />
     </router-link> -->
     <!-- <router-link></router-link> -->
-  </div> 
-=======
-      <component :is="route.content" class="w-6 h-6 font-bold text-black" />
-    </router-link>
+  
+
+      <!-- <component :is="route.content" class="w-6 h-6 font-bold text-black" />
+    </router-link> -->
   </div>
->>>>>>> 01e6844e970d04a1f419b2fcf7230b16d2b84f1f
+
 </template>
 
 <script lang="ts">
@@ -32,18 +31,18 @@ import {
   BookmarkIcon,
 } from "@heroicons/vue/outline";
 export default defineComponent({
-<<<<<<< HEAD
+
   // components: { HomeIcon, SearchIcon, BellIcon, GlobeIcon, MailIcon,BookmarkIcon },
-=======
-  components: {
-    HomeIcon,
-    SearchIcon,
-    BellIcon,
-    GlobeIcon,
-    MailIcon,
-    BookmarkIcon,
-  },
->>>>>>> 01e6844e970d04a1f419b2fcf7230b16d2b84f1f
+
+  // components: {
+  //   HomeIcon,
+  //   SearchIcon,
+  //   BellIcon,
+  //   GlobeIcon,
+  //   MailIcon,
+  //   BookmarkIcon,
+  // },
+
   setup() {
     const routes = ref<any>([]);
     const router = ref<any>([]);
