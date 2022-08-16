@@ -192,7 +192,7 @@ export default defineComponent({
       
 
       }catch(error){
-        console.log(error.message);
+        console.log(error);
         
       }
 };
@@ -201,7 +201,7 @@ export default defineComponent({
     };
     onMounted(() => {
       trend();
-      console.log(process.env.VUE_APP_API_KEY);
+      console.log(process.env.VUE_APP_BASE_URL);
       console.log("abc");
     });
     return { handleToBottom };
