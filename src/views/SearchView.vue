@@ -70,6 +70,8 @@ import axios from "axios";
 import env from "@/env.js";
 
 export default defineComponent({
+  props:['trends','handleToBottom'],
+
   name: "HomeView",
   // props: ["showresult"],
   components: {

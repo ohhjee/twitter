@@ -17,6 +17,7 @@
     "@heroicons/vue": "^1.0.6",
     "axios": "^0.27.2",
     "core-js": "^3.8.3",
+    "jquery": "^3.6.0",
     "vue": "^3.2.13",
     "vue-heroicons": "^0.9.4",
     "vue-observe-visibility": "^1.0.0",

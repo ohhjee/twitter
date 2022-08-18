@@ -30,6 +30,8 @@ import ExploreView from "@/components/Desktop/ExploreView.vue";
 import NavVIew from "@/components/Desktop/NavVIew.vue";
 
 export default defineComponent({
+  props:['trends','handleToBottom'],
+
   components: {
     footerMobile,
     SearchView,

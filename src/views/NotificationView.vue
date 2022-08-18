@@ -31,6 +31,9 @@ import NavVIew from "@/components/Desktop/NavVIew.vue"; // @ is an alias to /src
 import ExploreView from "@/components/Desktop/ExploreView.vue";
 
 export default defineComponent({
+
+  props:['trends','handleToBottom'],
+
   name: "HomeView",
   components: {
     footerMobile,
